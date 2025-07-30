@@ -1,13 +1,18 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
+  /* TicTacToe specified palette */
+  --primary: #4A90E2;
+  --secondary: #50E3C2;
+  --accent: #D0021B;
+
+  /* Light theme colors for background/text */
+  --bg-primary: #FBFEFF;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #232935;
+  --text-secondary: #87A2B0;
   --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --button-bg: var(--primary);
+  --button-text: #fff;
 }
 
 [data-theme="dark"] {
@@ -100,5 +105,176 @@
     right: 10px;
     padding: 8px 16px;
     font-size: 12px;
+  }
+}
+
+/* ---- Tic Tac Toe custom styles ---- */
+
+.ttt-app-bg {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ttt-content {
+  background: var(--bg-primary);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(74, 144, 226, 0.11);
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  max-width: 380px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.ttt-title {
+  margin-bottom: 0.2em;
+  color: var(--primary);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.ttt-status {
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+  margin-top: 0.2rem;
+  color: #222;
+  letter-spacing: 0.02em;
+  min-height: 2.4rem;
+}
+
+.ttt-board {
+  background: var(--bg-secondary);
+  padding: 12px 6px 6px 6px;
+  border-radius: 15px;
+  margin: 0.7rem auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 12px 0 rgba(80, 227, 194, 0.06);
+}
+
+.ttt-row {
+  display: flex;
+}
+
+.ttt-square {
+  width: 72px;
+  height: 72px;
+  margin: 6px;
+  background: #fff;
+  border: 2px solid #e7e7e7;
+  border-radius: 12px;
+  font-size: 2.6rem;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  color: var(--primary);
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.22s, background 0.22s, color 0.18s;
+  user-select: none;
+}
+
+.ttt-square:disabled {
+  background: #fafbfe;
+  cursor: not-allowed;
+  color: #bfcfe2;
+}
+
+.ttt-btn-restart {
+  margin-top: 1.65rem;
+  padding: 0.8rem 2.2rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.16rem;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(74, 144, 226, 0.08);
+  transition: background 0.15s, transform 0.13s;
+}
+
+.ttt-btn-restart:hover,
+.ttt-btn-restart:focus {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px) scale(1.025);
+  outline: none;
+}
+
+.ttt-scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.15rem;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  margin-top: -0.3rem;
+}
+.ttt-score {
+  min-width: 45px;
+  text-align: center;
+  font-size: 1.18rem;
+}
+.ttt-divider {
+  width: 1.5px;
+  height: 18px;
+  background: #ddd;
+  margin: 0 3px;
+  border-radius: 99px;
+  display: inline-block;
+}
+
+.ttt-footer {
+  margin-top: 2.3rem;
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  width: 100%;
+  text-align: center;
+}
+
+/* Responsive (mobile) tweaks */
+@media (max-width: 520px) {
+  .ttt-content {
+    padding: 1.3rem 0.4rem;
+    max-width: 98vw;
+  }
+  .ttt-board {
+    padding: 6px 0 0 0;
+  }
+  .ttt-square {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    margin: 4px;
+  }
+  .ttt-title {
+    font-size: 1.29rem;
+  }
+  .ttt-scoreboard {
+    font-size: 0.95rem;
+    margin-bottom: 0.45rem;
+  }
+  .ttt-status {
+    font-size: 1rem;
+    min-height: 1.7rem;
+  }
+  .ttt-btn-restart {
+    font-size: 0.96rem;
+    padding: 0.54rem 1.3rem;
   }
 }
